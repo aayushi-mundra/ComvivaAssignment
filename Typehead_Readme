@@ -1,0 +1,17 @@
+For Typehead suggestions <TRIE> data structure is used.
+
+1) A Trie Data Structure stores characters of a word at each level.
+So we can efficiently insert and get the suggestions of any substring.
+
+Classes
+1) TrieNode : assignment.ques2.TrieNode -> Class representation of TrieNode.
+Each node has information about 
+	1)Its character 
+	2) All the immediate childNodes 
+	3) Immediate child nodes are stored in Map with key as character and value as TrieNode, for fast access.
+	4) Words that this node represents. 
+2) TypeHeadTasks: assignment.ques2.TypeHeadTasks -> Class where TrieNode's insert and getSuggestion methods are defined.
+3) TypeheadSuggestionImpl : assignment.ques2.TypeheadSuggestionImpl -> class with main method
+4) TypeHeadSuggestionTest : assignment.ques2.test.TypeHeadSuggestionTest -> Test class with JUnit test cases.
+
+

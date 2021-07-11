@@ -1,0 +1,52 @@
+Here psudo code for Garbage Collection is given.
+
+1) Data Structure : GRAPH
+
+2) how would it be used to ensure garbage collection does not halt the main process : This I am not sure how to achieve.
+
+3) Mark and Sweep Algo
+	3.1) Find all the nodes which are not referenced currently. 
+	3.2) Objects are stored in Heap.
+	3.3) In each language there should be a way to get all the Root Object Nodes (i.e Global Variables, Local function variables).
+	3.4) Mark : So first from the root nodes we will recursively traverse all the linked nodes and mark them visited.
+	3.5) Sweep : There should be some way to get first node and last nodes of the Heap.
+				 We will traverse all the nodes and check if that node is not marked we will Free Up the space.
+				 if that node is marked we will un-mark again for the next Mark phase.
+				 
+4) PSudo code
+
+void garbargeCollector() {
+	markNodes();
+	sweepNodes();
+	
+} 
+
+void markNodes() {
+	Collection objectCollection = getAllRoot();
+	for(Object root : objectCollection) {
+		markNodesRecursively(root);
+	}
+}
+
+void markNodesRecursively(Object root) {
+	if(!isMarked(root)) {
+		mark(root);
+		
+		Collection childrenCollection = root.getAllChildren():
+		for(Object root : childrenCollection) {
+			markNodesRecursively(root);
+		}
+	}
+}
+
+void sweepNodes() {
+	Object current = start;
+	while(current reach to end) {
+		if(!isMarked(current)) {
+			free(current);
+		} else {
+			unmark(current);
+		}
+		current = nextNode();
+	}
+}

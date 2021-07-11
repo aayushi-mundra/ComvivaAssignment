@@ -1,0 +1,23 @@
+1) There are various algo for Rate Limiting :
+	1) Leaky Bucket : All the incoming requests are placed in a queue. 
+					  If the queue is full new requests are discarded.
+	2) Fixed Window : here window size is fixed of n sec/hour etc. Request is discarded if the counter exceeds the max limit.
+	3) Sliding Window : Here we take the incoming request's timestamp and compare with all the prev request timestamp.
+						All the outdated requests are removed.
+						now if the log size is greater than the max limit request is discarded, else it is served and counter is increased.
+
+
+2) The Rate Limiter Service: Algo ->Sliding Window
+	1) All incoming requests needs to be registered.
+	2) It contains : Request Data -> to store all request made by one key(example userID)
+	3) Evaluation Service: Based on analysis of the request data, <Evaluation Service> decided to forward or discard a service.
+	4) some aggregation is required on the input request in a given time frame
+	
+3) Cleanup Service -> will be responsible for removing the older data.
+
+4) DataBase: Because the data size is large here, we will be using Key-value based No-SQL DB like MongoDB.
+
+5) Sync Service : we need this to Sync the data between Disk DB and Cache memory. We need Cache here for faster computations.
+
+
+			
